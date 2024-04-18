@@ -8,11 +8,12 @@ class CGameObject;
 END
 
 
-
 BEGIN(Client)
 
 enum eObjectType
 {
+	MONSTER,
+	EVENT_TRIGGER,
 	WALL,
 	FLOOR,
 	OBJECT,
@@ -20,14 +21,21 @@ enum eObjectType
 	SODAMACHINE,
 	SODAMACHINE_BANNER,
 	BORDER,
+	SPAWN_TRIGGER,
+	SLOPE,
 	OBJTYPE_END,
 };
 
-enum eObjectTypeNoSave
+enum eMonsterType
 {
-	SODA,
+	WHITE_SUIT,
+	DRONE,
+	MONSTER_END,
+};
 
-	OBJNOSAVE_END
+enum eTriggerType
+{
+	TRIGGER_END,
 };
 
 class CImGui_Manager final : public CBase
@@ -59,7 +67,6 @@ private:
 	vector<_byte>	m_vecSelected[OBJTYPE_END];
 
 	vector<class CGameObject*> m_vecObjects[OBJTYPE_END];
-	vector<class CGameObject*> m_vecOBjNoSave[OBJNOSAVE_END];
 private:
 	int			m_iTextureIdx = { 0 };
 	int			m_iTexture_Count[OBJTYPE_END] = {};
@@ -68,11 +75,26 @@ private:
 	int				m_iTexture_Select_Index = { -1 };
 
 private:
-	string	m_szObjName[OBJTYPE_END] = { "Wall%d", "Floor%d", "Object%d", "Door%d", "Machine%d", "Machine_Banner%d", "Border_Floor%d"};
-	wstring m_szPrototypeTags[OBJTYPE_END] = { L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject",  L"Prototype_Door", L"Prototype_SodaMachine", L"Prototype_SodaMachine_Banner",
-	L"Prototype_Border" };
-	wstring m_szLayerTags[OBJTYPE_END] = { L"Wall", L"Floor", L"MapObject", L"Door", L"SodaMachine", L"SodaMachine_Banner", L"MapObject"};
+	string	m_szObjName[OBJTYPE_END]
+		= { "Monster%d", "Trigger%d", "Wall%d", "Floor%d", "Object%d", "Door%d", "Machine%d", "Machine_Banner%d", "Border%d"
+	, "SpawnTrigger%d", "Slope%d",};
 
+	wstring m_szPrototypeTags[OBJTYPE_END] = { L"Prototype_Monster", L"Prototype_Trigger"
+		, L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject"
+		, L"Prototype_Door", L"Prototype_SodaMachine"
+		, L"Prototype_SodaMachine_Banner",
+	L"Prototype_Border", L"Prototype_SpawnTrigger", L"Prototype_Slope",};
+
+	wstring m_szLayerTags[OBJTYPE_END] = { L"Monster", L"Trigger", L"Wall", L"Floor", L"MapObject", L"Door",
+		L"SodaMachine", L"SodaMachine_Banner", L"MapObject", L"SpawnTrigger", L"Slope",};
+
+#pragma region TriggerWindow
+	void SpawnTriggerWindow();
+
+	_int m_iMaxIdx = 0;
+	_int m_iMinIdx = 0;
+
+#pragma endregion 
 #pragma region SodaMachineWindow
 	void SodaMachineWindow();
 

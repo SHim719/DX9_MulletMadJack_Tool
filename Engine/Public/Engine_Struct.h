@@ -59,7 +59,8 @@ namespace Engine
 
 	typedef struct
 	{
-		class CGameObject*	pSrcObject;
+		//class CGameObject*	pSrcObject;
+		//_bool bIsMultCast
 		unsigned int		iLevel;
 		std::wstring		strDstLayer;
 		D3DXVECTOR3			vRayWorldPos;

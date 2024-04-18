@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="..\Public\BackGround.h" />
     <ClInclude Include="..\Public\Border.h" />
+    <ClInclude Include="..\Public\Bullet.h" />
     <ClInclude Include="..\Public\Client_Components.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
     <ClInclude Include="..\public\CMap_Manager.h">
@@ -177,16 +178,22 @@
     <ClInclude Include="..\Public\Level_Tool.h" />
     <ClInclude Include="..\public\Loader.h" />
     <ClInclude Include="..\Public\MainApp.h" />
+    <ClInclude Include="..\Public\Monster.h" />
     <ClInclude Include="..\public\Player.h" />
     <ClInclude Include="..\Public\Rigidbody.h" />
+    <ClInclude Include="..\Public\Slope.h" />
     <ClInclude Include="..\Public\Soda.h" />
     <ClInclude Include="..\Public\SodaMachine.h" />
     <ClInclude Include="..\Public\SodaMachine_Banner.h" />
+    <ClInclude Include="..\Public\SpawnTrigger.h" />
+    <ClInclude Include="..\Public\Terrain_Collider.h" />
     <ClInclude Include="..\Public\ToolCamera.h" />
     <ClInclude Include="..\Public\Transform_Anim.h" />
     <ClInclude Include="..\Public\TriggerObject.h" />
+    <ClInclude Include="..\Public\VIBuffer_Bullet.h" />
     <ClInclude Include="..\Public\VIBuffer_Door.h" />
     <ClInclude Include="..\Public\VIBuffer_Floor_Border.h" />
+    <ClInclude Include="..\Public\VIBuffer_Sphere.h" />
     <ClInclude Include="..\Public\Wall.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Resource.h" />
@@ -196,14 +203,19 @@
   <ItemGroup>
     <ClCompile Include="..\Private\BackGround.cpp" />
     <ClCompile Include="..\Private\Border.cpp" />
+    <ClCompile Include="..\Private\Bullet.cpp" />
     <ClCompile Include="..\private\CMap_Manager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Private\Slope.cpp" />
+    <ClCompile Include="..\Private\SpawnTrigger.cpp" />
+    <ClCompile Include="..\Private\Monster.cpp" />
     <ClCompile Include="..\Private\Soda.cpp" />
     <ClCompile Include="..\Private\Rigidbody.cpp" />
     <ClCompile Include="..\Private\SodaMachine.cpp" />
     <ClCompile Include="..\Private\SodaMachine_Banner.cpp" />
+    <ClCompile Include="..\Private\Terrain_Collider.cpp" />
     <ClCompile Include="..\Private\Transform_Anim.cpp" />
     <ClCompile Include="..\Private\Door.cpp" />
     <ClCompile Include="..\Private\MapObject.cpp" />
@@ -218,8 +230,10 @@
     <ClCompile Include="..\private\Player.cpp" />
     <ClCompile Include="..\Private\ToolCamera.cpp" />
     <ClCompile Include="..\Private\TriggerObject.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_Bullet.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Door.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Floor_Border.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_Sphere.cpp" />
     <ClCompile Include="..\Private\Wall.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="stdafx.cpp">

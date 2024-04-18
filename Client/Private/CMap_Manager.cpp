@@ -6,12 +6,18 @@
 #include "VIBuffer.h"
 #include "Door.h"
 #include "SodaMachine.h"
+#include "SpawnTrigger.h"
 
-wstring CMap_Manager::strLayers[] = { L"Wall", L"Floor", L"MapObject", L"Door", L"SodaMachine", L"SodaMachine_Banner",
-	L"MapObject"};
-wstring CMap_Manager::strPrototypeTags[] = { L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject",
-	L"Prototype_Door", L"Prototype_SodaMachine", L"Prototype_SodaMachine_Banner", L"Prototype_Border"
- };
+
+wstring CMap_Manager::strLayers[OBJTYPE_END] = { L"Monster", L"Trigger", L"Wall", L"Floor", L"MapObject", L"Door",
+	L"SodaMachine", L"SodaMachine_Banner", L"MapObject", L"SpawnTrigger", L"Slope"};
+
+wstring CMap_Manager::strPrototypeTags[OBJTYPE_END] = { L"Prototype_Monster", L"Prototype_Trigger"
+		, L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject"
+		, L"Prototype_Door", L"Prototype_SodaMachine"
+		, L"Prototype_SodaMachine_Banner",
+	L"Prototype_Border", L"Prototype_SpawnTrigger", L"Prototype_Slope"};
+
 
 HRESULT CMap_Manager::Save_Map(vector<CGameObject*>* vecObjects)
 { 
@@ -94,6 +100,18 @@ HRESULT CMap_Manager::Save_Map(vector<CGameObject*>* vecObjects)
 			WriteFile(hFile, &vPourPos, sizeof(_float3), &dwByte, nullptr);
 		}
 
+		for (auto& pObj : vecObjects[SPAWN_TRIGGER])
+		{
+			CSpawnTrigger* pSpawnTrigger = static_cast<CSpawnTrigger*>(pObj);
+			if (pSpawnTrigger)
+			{
+				_uint iMin = pSpawnTrigger->Get_MinIdx();
+				_uint iMax = pSpawnTrigger->Get_MaxIdx();
+				WriteFile(hFile, &iMin, sizeof(_uint), &dwByte, nullptr);
+				WriteFile(hFile, &iMax, sizeof(_uint), &dwByte, nullptr);
+			}
+		}
+
 		CloseHandle(hFile);
 	}
 
@@ -143,7 +161,6 @@ HRESULT CMap_Manager::Load_Map(vector<class CGameObject*>* vecObjects)
 			vecObjects[i].clear();
 		
 		DWORD dwByte(0);
-
 		for (_uint i = 0; i < (_uint)OBJTYPE_END; ++i)
 		{
 			_uint iVecSize = 0;
@@ -184,7 +201,8 @@ HRESULT CMap_Manager::Load_Map(vector<class CGameObject*>* vecObjects)
 				}
 				
 				CVIBuffer* pVIBuffer = dynamic_cast<CVIBuffer*>(pObj->Find_Component(L"VIBuffer"));
-				pVIBuffer->Scaling_Texcoord(pObj->Get_Transform()->Get_Scale());
+				if (pVIBuffer)
+					pVIBuffer->Scaling_Texcoord(pObj->Get_Transform()->Get_Scale());
 
 				vecObjects[i].push_back(pObj);
 				iReadFlag = 1;
@@ -218,39 +236,18 @@ HRESULT CMap_Manager::Load_Map(vector<class CGameObject*>* vecObjects)
 			++IT;
 		}
 
+		for (auto& pObj : vecObjects[SPAWN_TRIGGER])
+		{
+			CSpawnTrigger* pSpawnTrigger = static_cast<CSpawnTrigger*>(pObj);
+			_uint iMin, iMax;
+			ReadFile(hFile, &iMin, sizeof(_uint), &dwByte, nullptr);
+			ReadFile(hFile, &iMax, sizeof(_uint), &dwByte, nullptr);
+			pSpawnTrigger->Set_MinIdx(iMin);
+			pSpawnTrigger->Set_MaxIdx(iMax);
+		}
 
 		CloseHandle(hFile);
 	}
 
 	return S_OK;
-}
-
-void CMap_Manager::Load_Object(HANDLE hFile, vector<CGameObject*>* vecObjects)
-{
-	DWORD dwByte(0);
-
-	_uint iVecSize = 0;
-	ReadFile(hFile, &iVecSize, sizeof(_uint), &dwByte, nullptr);
-
-	for (_uint i = 0; i < iVecSize; ++i)
-	{
-		_float4x4 worldMatrix = {};
-		_uint iTextureIndex = 0;
-		_uint iLayerStrLength = 0;
-		_tchar szLayer[MAX_PATH] = {};
-		_uint iPrototypeTagLength = 0;
-		_tchar szPrototypeTag[MAX_PATH] = {};
-
-		ReadFile(hFile, &worldMatrix, sizeof(_float4x4), &dwByte, nullptr);
-		ReadFile(hFile, &iTextureIndex, sizeof(_uint), &dwByte, nullptr);
-		ReadFile(hFile, &iLayerStrLength, sizeof(_uint), &dwByte, nullptr);
-		ReadFile(hFile, szLayer, sizeof(_tchar) * iLayerStrLength, &dwByte, nullptr);
-		ReadFile(hFile, &iPrototypeTagLength, sizeof(_uint), &dwByte, nullptr);
-		ReadFile(hFile, szPrototypeTag, sizeof(_tchar) * iPrototypeTagLength, &dwByte, nullptr);;
-
-		auto pObj = CGameInstance::Get_Instance()->Add_Clone(LEVEL_TOOL, szLayer, szPrototypeTag);
-		pObj->Set_Texture_Index(iTextureIndex);
-		pObj->Get_Transform()->Set_WorldMatrix(worldMatrix);
-		vecObjects[OBJECT].push_back(pObj);
-	}
 }

@@ -60,6 +60,8 @@ void CSoda::LateTick(_float fTimeDelta)
 	m_pTransform->Set_State(CTransform::STATE_UP, &(vUp * vScaled.y));
 	m_pTransform->Set_State(CTransform::STATE_LOOK, &(vLook * vScaled.z));
 
+	//m_pTerrain_Collider->Update();
+
 	m_pGameInstance->Add_RenderObjects(CRenderer::RENDER_BLEND, this);
 }
 
@@ -113,6 +115,10 @@ HRESULT CSoda::Add_Components()
 	m_pBoxCollider = dynamic_cast<CBoxCollider*>(Add_Component(LEVEL_STATIC, TEXT("Box_Collider_Default"), TEXT("Collider"), &desc));
 	if (nullptr == m_pBoxCollider)
 		return E_FAIL;
+
+	//m_pTerrain_Collider = dynamic_cast<CTerrain_Collider*>(Add_Component(LEVEL_STATIC, TEXT("Terrain_Collider_Default"), TEXT("Terrain_Collider"), this));
+	//m_pTerrain_Collider->Set_Height(desc.vScale.y);
+	//m_pTerrain_Collider->Set_Width(desc.vScale.x);
 
 	return S_OK;
 }

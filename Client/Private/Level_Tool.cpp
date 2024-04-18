@@ -11,6 +11,11 @@
 #include "Soda.h"
 #include "Border.h"
 #include "Player.h"
+#include "Monster.h"
+#include "TriggerObject.h"
+#include "Bullet.h"
+#include "SpawnTrigger.h"
+#include "Slope.h"
 
 CLevel_Tool::CLevel_Tool(LPDIRECT3DDEVICE9 pGraphic_Device)
     :CLevel{ pGraphic_Device }
@@ -56,6 +61,16 @@ HRESULT CLevel_Tool::Initialize()
            L"../Bin/Resources/Textures/Soda/Soda0.png"))))
        return E_FAIL;
 
+   if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Monster_Textures",
+       CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
+           L"../Bin/Resources/Textures/Monster/Monster%d.png", 3))))
+       return E_FAIL;
+
+   if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Slope_Textures",
+       CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
+           L"../Bin/Resources/Textures/Slope/Slope0.png"))))
+       return E_FAIL;
+
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Wall"),
         CWall::Create(m_pGraphic_Device))))
         return E_FAIL;
@@ -88,6 +103,22 @@ HRESULT CLevel_Tool::Initialize()
         CSoda::Create(m_pGraphic_Device))))
         return E_FAIL;
 
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Monster"),
+        CMonster::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Trigger"),
+        CTriggerObject::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_SpawnTrigger"),
+        CSpawnTrigger::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Slope"),
+        CSlope::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Player"),
         CPlayer::Create(m_pGraphic_Device))))
         return E_FAIL;
@@ -95,7 +126,6 @@ HRESULT CLevel_Tool::Initialize()
     if (nullptr == m_pGameInstance->Add_Clone(LEVEL_TOOL, L"Player", TEXT("Prototype_Player")))
         return E_FAIL;
        
-   
     return S_OK;
 }
 

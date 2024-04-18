@@ -32,6 +32,7 @@ private:
 	LPDIRECT3DDEVICE9 m_pGraphic_Device = { nullptr };
 	CGameInstance* m_pGameInstance = { nullptr };
 
+	_bool m_bCamMode = true;
 
 private:
 	_float4x4 m_ViewMatrix;

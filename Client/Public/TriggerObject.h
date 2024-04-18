@@ -9,22 +9,29 @@ END
 
 BEGIN(Client)
 
-class CTriggerObject abstract : public CGameObject
+class CTriggerObject : public CGameObject
 {
-private:
+protected:
 	CTriggerObject(LPDIRECT3DDEVICE9 pGraphic_Device);
 	CTriggerObject(const CTriggerObject& rhs);
 	virtual ~CTriggerObject() = default;
+	
+public:
+	HRESULT Initialize_Prototype()	override;
+	HRESULT Initialize(void* pArg)	override;
+	void Tick(_float fTimeDelta)	override;
+	void LateTick(_float fTimeDelta) override;
+	HRESULT Render()				override;
 
 protected:
 	CBoxCollider* m_pBoxCollider = { nullptr };
-	//HRESULT Add_Components();
 
 protected:
-	virtual void TriggerEvent() = 0; // 상속받아서 이벤트 처리해줄것.
+	virtual void TriggerEvent() {} ; // 상속받아서 이벤트 처리해줄것.
 
 public:
-	CGameObject* Clone(void* pArg) = 0;
+	static CTriggerObject* Create(LPDIRECT3DDEVICE9 pGraphic_Device);
+	virtual CGameObject* Clone(void* pArg);
 	void Free() override;
 };
 

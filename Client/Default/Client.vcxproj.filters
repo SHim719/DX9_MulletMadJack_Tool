@@ -97,6 +97,27 @@
     <Filter Include="02.GameObjects\MapObject\Soda">
       <UniqueIdentifier>{9bdb3eea-cabd-4e12-b58f-01d4fbc8b35b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02.GameObjects\Monster">
+      <UniqueIdentifier>{9e6943a0-24ad-43e4-b4ac-e2f0630d8002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Client_Components\TerrainCollider">
+      <UniqueIdentifier>{ca4609a2-86fa-4dbe-8959-d296bd011039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\TriggerObject\SpawnTrigger">
+      <UniqueIdentifier>{567f51f2-de13-495e-af51-ff5624de9361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\Bullet">
+      <UniqueIdentifier>{83399965-86ff-4144-9962-76f551bb4a86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_Sphere">
+      <UniqueIdentifier>{bbf860ed-6015-4a79-b077-b020f3a4d310}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_Bullet">
+      <UniqueIdentifier>{9320f165-3d7f-4e0d-ab80-7e211e084249}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\Slope">
+      <UniqueIdentifier>{76b9f878-a48b-4042-8369-6baf2e2fabed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -192,6 +213,27 @@
     <ClInclude Include="..\Public\Soda.h">
       <Filter>02.GameObjects\MapObject\Soda</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\Monster.h">
+      <Filter>02.GameObjects\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Terrain_Collider.h">
+      <Filter>03.Client_Components\TerrainCollider</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\SpawnTrigger.h">
+      <Filter>02.GameObjects\TriggerObject\SpawnTrigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Bullet.h">
+      <Filter>02.GameObjects\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Sphere.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Bullet.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Slope.h">
+      <Filter>02.GameObjects\MapObject\Slope</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -271,6 +313,27 @@
     </ClCompile>
     <ClCompile Include="..\Private\Soda.cpp">
       <Filter>02.GameObjects\MapObject\Soda</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Monster.cpp">
+      <Filter>02.GameObjects\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Terrain_Collider.cpp">
+      <Filter>03.Client_Components\TerrainCollider</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\SpawnTrigger.cpp">
+      <Filter>02.GameObjects\TriggerObject\SpawnTrigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Bullet.cpp">
+      <Filter>02.GameObjects\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Sphere.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Bullet.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Slope.cpp">
+      <Filter>02.GameObjects\MapObject\Slope</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

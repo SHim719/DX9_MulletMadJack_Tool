@@ -106,7 +106,7 @@ private:
 	_float3				m_vRotation = _float3(0.f, 0.f, 0.f);
 
 private:
-	_float				m_fSpeedPerSec = { 0.0f };
+	_float				m_fSpeedPerSec = { 3.0f };
 	_float				m_fRotationPerSec = { 0.0f };
 public:
 	static CTransform* Create(LPDIRECT3DDEVICE9 pGraphic_Device);

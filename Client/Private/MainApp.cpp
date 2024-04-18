@@ -112,6 +112,14 @@ HRESULT CMainApp::Ready_Prototype_Components()
 		CVIBuffer_Box::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("VIBuffer_Sphere_Default"),
+		CVIBuffer_Sphere::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("VIBuffer_Bullet_Default"),
+		CVIBuffer_Bullet::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
 #pragma region Model
 	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("VIBuffer_SodaMachine_Default"),
 		CVIBuffer_Mesh::Create(m_pGraphic_Device, L"../Bin/Resources/Models/SodaMachine.obj"))))
@@ -132,6 +140,10 @@ HRESULT CMainApp::Ready_Prototype_Components()
 
 	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Rigidbody_Default"),
 		CRigidbody::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Terrain_Collider_Default"),
+		CTerrain_Collider::Create(m_pGraphic_Device))))
 		return E_FAIL;
 
 	return S_OK;

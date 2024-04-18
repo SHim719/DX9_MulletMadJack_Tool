@@ -20,9 +20,22 @@ public:
 	virtual void LateTick(_float fTimeDelta) override;
 	virtual HRESULT Render() override;
 
+
+private:
+	void SetPos_Look();
+	void SetPos_Up();
+	void SetPos_Right();
+
+private:
+	_bool m_bGround = { false };
+	_bool m_bSlope = { false };
+	CTransform* m_pSlopeTransform = { nullptr };
+
+	bool bFlag = false;
 private:
 	class CToolCamera*	m_pCamera = { nullptr };
 	class CBoxCollider* m_pBoxCollider = { nullptr };
+	CRigidbody* m_pRigidbody = { nullptr };
 
 public:
 	/* 원형을 생성하기위한 함수. */

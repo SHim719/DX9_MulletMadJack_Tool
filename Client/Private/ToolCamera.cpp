@@ -42,37 +42,49 @@ void CToolCamera::Tick(_float fTimeDelta)
 	GetCursorPos(&m_tCurrentMousePos);
 	ScreenToClient(g_hWnd, &m_tCurrentMousePos);
 
-	if (m_pGameInstance->GetKey(eKeyCode::RButton))
+	if (m_pGameInstance->GetKeyDown(eKeyCode::Space))
 	{
-		if (m_pGameInstance->GetKey(eKeyCode::W))
-		{
-			m_pTransformCom->Go_Straight(fTimeDelta * 2.f);
-		}
+		m_bCamMode = !m_bCamMode;
+	}
 
-		if (m_pGameInstance->GetKey(eKeyCode::S))
+	if (m_bCamMode)
+	{
+		if (m_pGameInstance->GetKey(eKeyCode::RButton))
 		{
-			m_pTransformCom->Go_Backward(fTimeDelta * 2.f);
-		}
+			if (m_pGameInstance->GetKey(eKeyCode::W))
+			{
+				m_pTransformCom->Go_Straight(fTimeDelta * 2.f);
+			}
 
-		if (m_pGameInstance->GetKey(eKeyCode::A))
-		{
-			m_pTransformCom->Go_Left(fTimeDelta * 2.f);
-		}
+			if (m_pGameInstance->GetKey(eKeyCode::S))
+			{
+				m_pTransformCom->Go_Backward(fTimeDelta * 2.f);
+			}
 
-		if (m_pGameInstance->GetKey(eKeyCode::D))
-		{
-			m_pTransformCom->Go_Right(fTimeDelta * 2.f);
-		}
+			if (m_pGameInstance->GetKey(eKeyCode::A))
+			{
+				m_pTransformCom->Go_Left(fTimeDelta * 2.f);
+			}
 
-		if (m_pGameInstance->GetKey(eKeyCode::E))
-		{
-			m_pTransformCom->Go_Up(fTimeDelta * 2.f);
-		}
+			if (m_pGameInstance->GetKey(eKeyCode::D))
+			{
+				m_pTransformCom->Go_Right(fTimeDelta * 2.f);
+			}
 
-		if (m_pGameInstance->GetKey(eKeyCode::Q))
-		{
-			m_pTransformCom->Go_Down(fTimeDelta * 2.f);
+			if (m_pGameInstance->GetKey(eKeyCode::E))
+			{
+				m_pTransformCom->Go_Up(fTimeDelta * 2.f);
+			}
+
+			if (m_pGameInstance->GetKey(eKeyCode::Q))
+			{
+				m_pTransformCom->Go_Down(fTimeDelta * 2.f);
+			}
+			Rotation_By_Mouse();
 		}
+	}
+	else
+	{
 		Rotation_By_Mouse();
 	}
 
@@ -112,7 +124,7 @@ void CToolCamera::Mouse_Ray()
 
 	RAY_DESC rayDesc{};
 	rayDesc.iLevel = LEVEL_TOOL;
-	rayDesc.strDstLayer = L"SodaMachine";
+	rayDesc.strDstLayer = L"Wall";
 	rayDesc.vRayDir = vRayDir;
 	rayDesc.vRayWorldPos = fMouseWorld_Near;
 

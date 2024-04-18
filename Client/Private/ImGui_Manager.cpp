@@ -8,6 +8,7 @@
 #include "VIBuffer.h"
 #include "Door.h"
 #include "SodaMachine.h"
+#include "SpawnTrigger.h"
 
 IMPLEMENT_SINGLETON(CImGui_Manager)
 
@@ -45,6 +46,9 @@ HRESULT CImGui_Manager::Initialize(LPDIRECT3DDEVICE9 pGraphic_Device)
     m_iTexture_Count[FLOOR] = 6;
     m_iTexture_Count[OBJECT] = 16;
     m_iTexture_Count[DOOR] = 5;
+    m_iTexture_Count[MONSTER] = 2;
+    //m_iTexture_Count[EVENT_TRIGGER] = 2;
+    m_iTexture_Count[SLOPE] = 1;
    
 	return S_OK;
 }
@@ -64,6 +68,7 @@ void CImGui_Manager::Tick()
     ColliderWindow();
     DoorWindow(); 
     SodaMachineWindow();
+    SpawnTriggerWindow();
 
     Transform_Gizmo();
 }
@@ -80,6 +85,48 @@ void CImGui_Manager::Render()
     m_pGraphic_Device->SetRenderState(D3DRS_ZENABLE, TRUE);
     m_pGraphic_Device->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);
     m_pGraphic_Device->SetRenderState(D3DRS_SCISSORTESTENABLE, TRUE);
+}
+
+void CImGui_Manager::SpawnTriggerWindow()
+{
+    if (SPAWN_TRIGGER != m_eScene_Select_Object || 1 != m_SelectObjIndices.size())
+        return;
+
+    CSpawnTrigger* pTrigger = dynamic_cast<CSpawnTrigger*>(m_vecObjects[SPAWN_TRIGGER][*m_SelectObjIndices.begin()]);
+    if (nullptr == pTrigger)
+        return;
+
+    m_iMinIdx = pTrigger->Get_MinIdx();
+    m_iMaxIdx = pTrigger->Get_MaxIdx();
+
+    if (ImGui::Begin("SpawnTrigger", (bool*)0))
+    {
+        ImGui::SetCursorPos(ImVec2(15.5, 39.5));
+        ImGui::Text("Enemy Index Min");
+
+        ImGui::SetCursorPos(ImVec2(15.5, 74.5));
+        ImGui::Text("Enemy Index Max");
+
+        ImGui::SetCursorPos(ImVec2(139.f, 35.f));
+        ImGui::PushItemWidth(200);
+
+        if (ImGui::InputInt("##MinIdx", &m_iMinIdx))
+        {
+            pTrigger->Set_MinIdx(m_iMinIdx);
+        }
+        ImGui::PopItemWidth();
+
+        ImGui::SetCursorPos(ImVec2(140, 69.875));
+        ImGui::PushItemWidth(200);
+        if (ImGui::InputInt("##MaxIdx", &m_iMaxIdx))
+        {
+            pTrigger->Set_MaxIdx(m_iMaxIdx);
+        }
+        ImGui::PopItemWidth();
+
+    }
+    ImGui::End();
+
 }
 
 void CImGui_Manager::SodaMachineWindow()
@@ -478,6 +525,18 @@ void CImGui_Manager::Render_TexIndex(eObjectType eType)
 
 void CImGui_Manager::Tree_SceneObjects()
 {
+    if (ImGui::TreeNode("Monster"))
+    {
+        Tree_View(MONSTER);
+        ImGui::TreePop();
+    }
+
+    if (ImGui::TreeNode("Trigger"))
+    {
+        Tree_View(EVENT_TRIGGER);
+        ImGui::TreePop();
+    }
+
     if (ImGui::TreeNode("Wall"))
     {
         Tree_View(WALL);
@@ -520,6 +579,17 @@ void CImGui_Manager::Tree_SceneObjects()
         ImGui::TreePop();
     }
 
+    if (ImGui::TreeNode("Spawn_Trigger"))
+    {
+        Tree_View(SPAWN_TRIGGER);
+        ImGui::TreePop();
+    }
+
+    if (ImGui::TreeNode("Slope"))
+    {
+        Tree_View(SLOPE);
+        ImGui::TreePop();
+    }
 }
 
 void CImGui_Manager::Tree_View(eObjectType eType)
@@ -596,8 +666,8 @@ void CImGui_Manager::Tree_View(eObjectType eType)
 void CImGui_Manager::ComboBox_Object()
 {
     static int iItemIdx = 0;
-    const char* combo_value[OBJTYPE_END] = { "Wall", "Floor", "Object", "Door", "SodaMachine", "SodaMachine_Banner",
-    "Border" };
+    const char* combo_value[OBJTYPE_END] = { "Monster", "Trigger",
+        "Wall", "Floor", "Object", "Door", "SodaMachine", "SodaMachine_Banner", "Border", "Spawn_Trigger", "Slope"};
      
     ImGui::Combo("##Object", &iItemIdx, combo_value, IM_ARRAYSIZE(combo_value));
 

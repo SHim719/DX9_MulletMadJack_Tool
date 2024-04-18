@@ -42,10 +42,13 @@ public:
 protected:
 	_uint m_iTexture_Index = 0;
 
+	string m_strTag = "";
+
 public:
 	void Set_Texture_Index(_uint iIndex) { m_iTexture_Index = iIndex; }
 	_uint Get_Texture_Index() { return m_iTexture_Index; }
 
+	const string& Get_Tag() { return m_strTag; }
 public:
 	virtual void On_Ray_Intersect(const _float3& fHitWorldPos, const _float& fDist) {}
 
