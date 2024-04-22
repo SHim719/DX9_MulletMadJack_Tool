@@ -47,7 +47,6 @@ void CWall::LateTick(_float fTimeDelta)
 HRESULT CWall::Render()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_LIGHTING, false);
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);
 
 	if (FAILED(m_pTransform->Bind_WorldMatrix()))
 		return E_FAIL;
@@ -59,7 +58,6 @@ HRESULT CWall::Render()
 
 	m_pBoxCollider->Render();
 
-	m_pGraphic_Device->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 	return S_OK;
 }
 
