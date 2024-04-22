@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClInclude Include="..\Public\BackGround.h" />
     <ClInclude Include="..\Public\Border.h" />
+    <ClInclude Include="..\Public\BoxObject.h" />
     <ClInclude Include="..\Public\Bullet.h" />
     <ClInclude Include="..\Public\Client_Components.h" />
     <ClInclude Include="..\Public\Client_Defines.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="..\Public\Level_Tool.h" />
     <ClInclude Include="..\public\Loader.h" />
     <ClInclude Include="..\Public\MainApp.h" />
+    <ClInclude Include="..\Public\MapObjectXY.h" />
     <ClInclude Include="..\Public\Monster.h" />
     <ClInclude Include="..\public\Player.h" />
     <ClInclude Include="..\Public\Rigidbody.h" />
@@ -190,6 +192,8 @@
     <ClInclude Include="..\Public\ToolCamera.h" />
     <ClInclude Include="..\Public\Transform_Anim.h" />
     <ClInclude Include="..\Public\TriggerObject.h" />
+    <ClInclude Include="..\Public\Ventilador.h" />
+    <ClInclude Include="..\Public\VIBuffer_BoxObj.h" />
     <ClInclude Include="..\Public\VIBuffer_Bullet.h" />
     <ClInclude Include="..\Public\VIBuffer_Door.h" />
     <ClInclude Include="..\Public\VIBuffer_Floor_Border.h" />
@@ -203,11 +207,13 @@
   <ItemGroup>
     <ClCompile Include="..\Private\BackGround.cpp" />
     <ClCompile Include="..\Private\Border.cpp" />
+    <ClCompile Include="..\Private\BoxObject.cpp" />
     <ClCompile Include="..\Private\Bullet.cpp" />
     <ClCompile Include="..\private\CMap_Manager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Private\MapObjectXY.cpp" />
     <ClCompile Include="..\Private\Slope.cpp" />
     <ClCompile Include="..\Private\SpawnTrigger.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
@@ -230,6 +236,8 @@
     <ClCompile Include="..\private\Player.cpp" />
     <ClCompile Include="..\Private\ToolCamera.cpp" />
     <ClCompile Include="..\Private\TriggerObject.cpp" />
+    <ClCompile Include="..\Private\Ventilador.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_BoxObj.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Bullet.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Door.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Floor_Border.cpp" />

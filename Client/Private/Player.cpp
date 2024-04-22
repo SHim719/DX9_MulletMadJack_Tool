@@ -49,7 +49,7 @@ void CPlayer::Tick(_float fTimeDelta)
 	}
 	//m_pBoxCollider->Update_BoxCollider(m_pTransform->Get_WorldMatrix());
 
-	if (m_pGameInstance->GetKeyDown(eKeyCode::NUMPAD0))
+	if (m_pGameInstance->GetKeyDown(eKeyCode::P))
 	{
 		m_pTransform->Set_State(CTransform::STATE_POSITION, &_float3(0.f, 10.f, -1.f));
 	}

@@ -16,6 +16,9 @@
 #include "Bullet.h"
 #include "SpawnTrigger.h"
 #include "Slope.h"
+#include "BoxObject.h"
+#include "Ventilador.h"
+#include "MapObjectXY.h"
 
 CLevel_Tool::CLevel_Tool(LPDIRECT3DDEVICE9 pGraphic_Device)
     :CLevel{ pGraphic_Device }
@@ -28,7 +31,7 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Wall_Textures",
         CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-            L"../Bin/Resources/Textures/Wall/Albedo/Wall%d.png", 17))))
+            L"../Bin/Resources/Textures/Wall/Albedo/Wall%d.png", 23))))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Floor_Textures",
@@ -38,7 +41,7 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Object_Textures",
         CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-            L"../Bin/Resources/Textures/Objects/Object%d.png", 16))))
+            L"../Bin/Resources/Textures/Objects/Object%d.png", 30))))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Door_Textures",
@@ -70,6 +73,17 @@ HRESULT CLevel_Tool::Initialize()
        CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
            L"../Bin/Resources/Textures/Slope/Slope0.png"))))
        return E_FAIL;
+
+   if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"BoxObject_Textures",
+       CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
+           L"../Bin/Resources/Textures/Box/Box0.png"))))
+       return E_FAIL; 
+
+   if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Ventilador_Textures",
+       CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
+           L"../Bin/Resources/Textures/Ventilador/Ventilador%d.png", 2))))
+       return E_FAIL;
+   
 
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Wall"),
         CWall::Create(m_pGraphic_Device))))
@@ -119,6 +133,14 @@ HRESULT CLevel_Tool::Initialize()
         CSlope::Create(m_pGraphic_Device))))
         return E_FAIL;
 
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_BoxObject"),
+        CBoxObject::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Ventilador"),
+        CVentilador::Create(m_pGraphic_Device))))
+        return E_FAIL;
+    
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Player"),
         CPlayer::Create(m_pGraphic_Device))))
         return E_FAIL;

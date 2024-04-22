@@ -1,25 +1,25 @@
-#include "Wall.h"
+#include "BoxObject.h"
 
 #include "GameInstance.h"
 
 
-CWall::CWall(LPDIRECT3DDEVICE9 pGraphic_Device)
-	: CGameObject { pGraphic_Device }
+CBoxObject::CBoxObject(LPDIRECT3DDEVICE9 pGraphic_Device)
+	: CGameObject{ pGraphic_Device }
 {
 }
 
-CWall::CWall(const CWall& rhs)
-	: CGameObject { rhs }
+CBoxObject::CBoxObject(const CBoxObject& rhs)
+	: CGameObject{ rhs }
 {
 }
 
-HRESULT CWall::Initialize_Prototype()
+HRESULT CBoxObject::Initialize_Prototype()
 {
-	
+
 	return S_OK;
 }
 
-HRESULT CWall::Initialize(void* pArg)
+HRESULT CBoxObject::Initialize(void* pArg)
 {
 	if (E_FAIL == Add_Components())
 		return E_FAIL;
@@ -30,21 +30,21 @@ HRESULT CWall::Initialize(void* pArg)
 	return S_OK;
 }
 
-void CWall::PriorityTick(_float fTimeDelta)
+void CBoxObject::PriorityTick(_float fTimeDelta)
 {
 }
 
-void CWall::Tick(_float fTimeDelta)
+void CBoxObject::Tick(_float fTimeDelta)
 {
 	m_pBoxCollider->Update_BoxCollider(m_pTransform->Get_WorldMatrix());
 }
 
-void CWall::LateTick(_float fTimeDelta)
+void CBoxObject::LateTick(_float fTimeDelta)
 {
 	m_pGameInstance->Add_RenderObjects(CRenderer::RENDER_NONBLEND, this);
 }
 
-HRESULT CWall::Render()
+HRESULT CBoxObject::Render()
 {
 	m_pGraphic_Device->SetRenderState(D3DRS_LIGHTING, false);
 
@@ -57,20 +57,21 @@ HRESULT CWall::Render()
 	m_pVIBufferCom->Render();
 
 	m_pBoxCollider->Render();
+
 	return S_OK;
 }
 
-HRESULT CWall::Add_Components()
+HRESULT CBoxObject::Add_Components()
 {
 	m_pTransform = dynamic_cast<CTransform*>(Add_Component(LEVEL_STATIC, TEXT("Transform_Default"), TEXT("Transform"), nullptr));
 	if (nullptr == m_pTransform)
 		return E_FAIL;
 
-	m_pVIBufferCom = dynamic_cast<CVIBuffer_RectX*>(Add_Component(LEVEL_STATIC, TEXT("VIBuffer_RectX_Default"), TEXT("VIBuffer"), nullptr));
+	m_pVIBufferCom = dynamic_cast<CVIBuffer_BoxObj*>(Add_Component(LEVEL_STATIC, TEXT("VIBuffer_BoxObject_Default"), TEXT("VIBuffer"), nullptr));
 	if (nullptr == m_pVIBufferCom)
 		return E_FAIL;
 
-	m_pTextureCom = dynamic_cast<CTexture*>(Add_Component(LEVEL_STATIC, TEXT("Wall_Textures"), TEXT("Wall_Textures"), nullptr));
+	m_pTextureCom = dynamic_cast<CTexture*>(Add_Component(LEVEL_STATIC, TEXT("BoxObject_Textures"), TEXT("BoxObject_Textures"), nullptr));
 	if (nullptr == m_pTextureCom)
 		return E_FAIL;
 
@@ -82,45 +83,38 @@ HRESULT CWall::Add_Components()
 	if (nullptr == m_pBoxCollider)
 		return E_FAIL;
 
-	 
+
 	return S_OK;
 }
 
-void CWall::On_Ray_Intersect(const _float3& fHitWorldPos, const _float& fDist)
-{ 
-	//std::cout << "Ray_Intersect : Wall " << '\n';
-	//std::cout << "Hit World Pos: " << "X : " << fHitWorldPos.x << " Y : " << fHitWorldPos.y << " Z : " << fHitWorldPos.z << '\n';
-	int x = 10;
-	
-}
 
-CWall* CWall::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
+CBoxObject* CBoxObject::Create(LPDIRECT3DDEVICE9 pGraphic_Device)
 {
-	CWall* pInstance = new CWall(pGraphic_Device);
+	CBoxObject* pInstance = new CBoxObject(pGraphic_Device);
 
 	if (FAILED(pInstance->Initialize_Prototype()))
 	{
-		MSG_BOX(TEXT("Failed to Created : CWall"));
+		MSG_BOX(TEXT("Failed to Created : CBoxObject"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-CGameObject* CWall::Clone(void* pArg)
+CGameObject* CBoxObject::Clone(void* pArg)
 {
-	CWall* pInstance = new CWall(*this);
+	CBoxObject* pInstance = new CBoxObject(*this);
 
 	if (FAILED(pInstance->Initialize(pArg)))
 	{
-		MSG_BOX(TEXT("Failed to Clone : CWall"));
+		MSG_BOX(TEXT("Failed to Clone : CBoxObject"));
 		Safe_Release(pInstance);
 	}
 
 	return pInstance;
 }
 
-void CWall::Free()
+void CBoxObject::Free()
 {
 	__super::Free();
 

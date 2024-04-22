@@ -44,6 +44,7 @@ protected:
 
 	string m_strTag = "";
 
+	_bool m_bCanIntersect = { true };
 public:
 	void Set_Texture_Index(_uint iIndex) { m_iTexture_Index = iIndex; }
 	_uint Get_Texture_Index() { return m_iTexture_Index; }
@@ -52,6 +53,7 @@ public:
 public:
 	virtual void On_Ray_Intersect(const _float3& fHitWorldPos, const _float& fDist) {}
 
+	_bool Can_Intersect() { return m_bCanIntersect; }
 public:
 	virtual void OnCollisionEnter(CGameObject* pOther) {}
 	virtual void OnCollisionStay(CGameObject* pOther) {}

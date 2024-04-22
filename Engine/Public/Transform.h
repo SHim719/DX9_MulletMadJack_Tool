@@ -101,6 +101,8 @@ public:
 
 	void Add_YAxisInput(_float fRadian);
 	void Add_RollInput(_float fRadian);
+
+	void Set_RotationSpeed(_float _fRadian) { m_fRotationPerSec = _fRadian; }
 private:
 	_float4x4			m_WorldMatrix;
 	_float3				m_vRotation = _float3(0.f, 0.f, 0.f);

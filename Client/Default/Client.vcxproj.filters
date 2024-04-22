@@ -118,6 +118,21 @@
     <Filter Include="02.GameObjects\MapObject\Slope">
       <UniqueIdentifier>{76b9f878-a48b-4042-8369-6baf2e2fabed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_BoxObj">
+      <UniqueIdentifier>{636c1688-162e-4a30-bbca-41efb99ddbae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\Box">
+      <UniqueIdentifier>{1cbf29ce-5033-4f7c-913d-366774dd3d13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\Ventilador">
+      <UniqueIdentifier>{e269df97-2fac-4495-859f-d9bbd314f5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_Wall">
+      <UniqueIdentifier>{4e7834ee-4d0f-4e53-9a0a-24ed73067d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\MapObject\MapObjectXY">
+      <UniqueIdentifier>{921bf32c-8eed-411e-b6bc-855325210795}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -234,6 +249,18 @@
     <ClInclude Include="..\Public\Slope.h">
       <Filter>02.GameObjects\MapObject\Slope</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_BoxObj.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_BoxObj</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\BoxObject.h">
+      <Filter>02.GameObjects\MapObject\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Ventilador.h">
+      <Filter>02.GameObjects\MapObject\Ventilador</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\MapObjectXY.h">
+      <Filter>02.GameObjects\MapObject\MapObject\MapObjectXY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -334,6 +361,18 @@
     </ClCompile>
     <ClCompile Include="..\Private\Slope.cpp">
       <Filter>02.GameObjects\MapObject\Slope</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_BoxObj.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_BoxObj</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\BoxObject.cpp">
+      <Filter>02.GameObjects\MapObject\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Ventilador.cpp">
+      <Filter>02.GameObjects\MapObject\Ventilador</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\MapObjectXY.cpp">
+      <Filter>02.GameObjects\MapObject\MapObject\MapObjectXY</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
