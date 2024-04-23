@@ -25,6 +25,8 @@ enum eObjectType
 	SLOPE,
 	BOX_OBJECT,
 	VENTILADOR,
+	ELEVATOR_L,
+	ELEVATOR_R,
 	OBJTYPE_END,
 };
 
@@ -38,6 +40,8 @@ enum eMonsterType
 
 enum eTriggerType
 {
+	STAGE_END,
+
 	TRIGGER_END,
 };
 
@@ -80,18 +84,18 @@ private:
 private:
 	string	m_szObjName[OBJTYPE_END]
 		= { "Monster%d", "Trigger%d", "Wall%d", "Floor%d", "Object%d", "Door%d", "Machine%d", "Machine_Banner%d", "Border%d"
-	, "SpawnTrigger%d", "Slope%d", "Box%d", "Ventilador%d"};
+	, "SpawnTrigger%d", "Slope%d", "Box%d", "Ventilador%d", "Elevator_L%d", "Elevator_R%d" };
 
 	wstring m_szPrototypeTags[OBJTYPE_END] = { L"Prototype_Monster", L"Prototype_Trigger"
 		, L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject"
 		, L"Prototype_Door", L"Prototype_SodaMachine"
 		, L"Prototype_SodaMachine_Banner",
 	L"Prototype_Border", L"Prototype_SpawnTrigger", L"Prototype_Slope",
-	L"Prototype_BoxObject", L"Prototype_Ventilador"};
+	L"Prototype_BoxObject", L"Prototype_Ventilador", L"Prototype_Elevator_L", L"Prototype_Elevator_R"};
 
 	wstring m_szLayerTags[OBJTYPE_END] = { L"Monster", L"Trigger", L"Wall", L"Floor", L"MapObject", L"Door",
 		L"SodaMachine", L"SodaMachine_Banner", L"MapObject", L"SpawnTrigger", L"Slope",
-	L"BoxObject", L"Ventilador"};
+	L"BoxObject", L"Ventilador", L"Elevator", L"Elevator"};
 
 #pragma region TriggerWindow
 	void SpawnTriggerWindow();

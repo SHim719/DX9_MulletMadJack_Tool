@@ -19,6 +19,8 @@
 #include "BoxObject.h"
 #include "Ventilador.h"
 #include "MapObjectXY.h"
+#include "Elevator_L.h"
+#include "Elevator_R.h"
 
 CLevel_Tool::CLevel_Tool(LPDIRECT3DDEVICE9 pGraphic_Device)
     :CLevel{ pGraphic_Device }
@@ -31,12 +33,12 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Wall_Textures",
         CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-            L"../Bin/Resources/Textures/Wall/Albedo/Wall%d.png", 23))))
+            L"../Bin/Resources/Textures/Wall/Albedo/Wall%d.png", 25))))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Floor_Textures",
         CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-            L"../Bin/Resources/Textures/Floor/Albedo/Floor%d.png", 6))))
+            L"../Bin/Resources/Textures/Floor/Albedo/Floor%d.png", 10))))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Object_Textures",
@@ -82,6 +84,11 @@ HRESULT CLevel_Tool::Initialize()
    if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Ventilador_Textures",
        CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
            L"../Bin/Resources/Textures/Ventilador/Ventilador%d.png", 2))))
+       return E_FAIL;
+
+   if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Elevator_Textures",
+       CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
+           L"../Bin/Resources/Textures/Elevator/Elevator0.png"))))
        return E_FAIL;
    
 
@@ -139,6 +146,14 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Ventilador"),
         CVentilador::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Elevator_L"),
+        CElevator_L::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Elevator_R"),
+        CElevator_R::Create(m_pGraphic_Device))))
         return E_FAIL;
     
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Player"),

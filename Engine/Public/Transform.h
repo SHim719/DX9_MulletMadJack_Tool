@@ -103,6 +103,7 @@ public:
 	void Add_RollInput(_float fRadian);
 
 	void Set_RotationSpeed(_float _fRadian) { m_fRotationPerSec = _fRadian; }
+	void Set_Speed(_float fSpeed) { m_fSpeedPerSec = fSpeed; }
 private:
 	_float4x4			m_WorldMatrix;
 	_float3				m_vRotation = _float3(0.f, 0.f, 0.f);

@@ -42,9 +42,9 @@ HRESULT CImGui_Manager::Initialize(LPDIRECT3DDEVICE9 pGraphic_Device)
         assert(false);
     }
 
-    m_iTexture_Count[WALL] = 23;
-    m_iTexture_Count[FLOOR] = 6;
-    m_iTexture_Count[OBJECT] = 30;
+    m_iTexture_Count[WALL] = 25;
+    m_iTexture_Count[FLOOR] = 10;
+    m_iTexture_Count[OBJECT] = 31;
     m_iTexture_Count[DOOR] = 5;
     m_iTexture_Count[MONSTER] = 3;
     //m_iTexture_Count[EVENT_TRIGGER] = 2;
@@ -603,6 +603,17 @@ void CImGui_Manager::Tree_SceneObjects()
         ImGui::TreePop();
     }
 
+    if (ImGui::TreeNode("Elevator_L"))
+    {
+        Tree_View(ELEVATOR_L);
+        ImGui::TreePop();
+    }
+
+    if (ImGui::TreeNode("Elevator_R"))
+    {
+        Tree_View(ELEVATOR_R);
+        ImGui::TreePop();
+    }
 }
 
 void CImGui_Manager::Tree_View(eObjectType eType)
@@ -681,7 +692,7 @@ void CImGui_Manager::ComboBox_Object()
     static int iItemIdx = 0;
     const char* combo_value[OBJTYPE_END] = { "Monster", "Trigger",
         "Wall", "Floor", "Object", "Door", "SodaMachine", "SodaMachine_Banner", "Border", "Spawn_Trigger", "Slope"
-    , "Box", "Ventilador"};
+    , "Box", "Ventilador", "Elevator_L", "Elevator_R" };
      
     ImGui::Combo("##Object", &iItemIdx, combo_value, IM_ARRAYSIZE(combo_value));
 
@@ -720,7 +731,8 @@ void CImGui_Manager::Key_Input()
         }
         
         CVIBuffer* pVIBuffer = dynamic_cast<CVIBuffer*>(pToCopyObj->Find_Component(L"VIBuffer"));
-        pVIBuffer->Scaling_Texcoord(pFromCopyObj->Get_Transform()->Get_Scale());
+        if (pVIBuffer)
+            pVIBuffer->Scaling_Texcoord(pFromCopyObj->Get_Transform()->Get_Scale());
     }
 
     if (m_pGameInstance->GetKeyDown(eKeyCode::Delete))

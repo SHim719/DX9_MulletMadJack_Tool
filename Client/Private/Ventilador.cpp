@@ -39,7 +39,7 @@ void CVentilador::Tick(_float fTimeDelta)
 {
 	m_pBoxCollider->Update_BoxCollider(m_pTransform->Get_WorldMatrix());
 
-	m_pTransform->Turn(m_pTransform->Get_State(CTransform::STATE_LOOK), fTimeDelta);
+	//m_pTransform->Turn(m_pTransform->Get_State(CTransform::STATE_LOOK), fTimeDelta);
 }
 
 void CVentilador::LateTick(_float fTimeDelta)

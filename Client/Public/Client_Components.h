@@ -9,4 +9,6 @@
 #include "VIBuffer_Sphere.h"
 #include "VIBuffer_Bullet.h"
 #include "VIBuffer_BoxObj.h"
+#include "VIBuffer_Elevator_L.h"
+#include "VIBuffer_Elevator_R.h"
 

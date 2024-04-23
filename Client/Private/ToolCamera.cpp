@@ -49,6 +49,16 @@ void CToolCamera::Tick(_float fTimeDelta)
 
 	if (m_bCamMode)
 	{
+		if (m_pGameInstance->GetKeyDown(eKeyCode::LShift))
+		{
+			m_pTransformCom->Set_Speed(20.f);
+		}
+
+		else if (m_pGameInstance->GetKeyNone(eKeyCode::LShift))
+		{
+			m_pTransformCom->Set_Speed(3.f);
+		}
+
 		if (m_pGameInstance->GetKey(eKeyCode::RButton))
 		{
 			if (m_pGameInstance->GetKey(eKeyCode::W))

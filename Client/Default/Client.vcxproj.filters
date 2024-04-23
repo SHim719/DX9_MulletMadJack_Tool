@@ -133,6 +133,18 @@
     <Filter Include="02.GameObjects\MapObject\MapObject\MapObjectXY">
       <UniqueIdentifier>{921bf32c-8eed-411e-b6bc-855325210795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_L">
+      <UniqueIdentifier>{e84250ea-f8e7-44d0-b0e1-9fb92d33271f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_R">
+      <UniqueIdentifier>{16a9a6b8-df21-4435-8aad-42795f584b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\Elevator">
+      <UniqueIdentifier>{46f0b251-910e-4043-87b2-dc3f5ed02f35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\Elevator\L">
+      <UniqueIdentifier>{0288a68d-fc9f-4a94-8ada-914b2da246f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -261,6 +273,18 @@
     <ClInclude Include="..\Public\MapObjectXY.h">
       <Filter>02.GameObjects\MapObject\MapObject\MapObjectXY</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Elevator_L.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_L</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_Elevator_R.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_R</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Elevator_L.h">
+      <Filter>02.GameObjects\MapObject\Elevator\L</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\Elevator_R.h">
+      <Filter>02.GameObjects\MapObject\Elevator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -373,6 +397,18 @@
     </ClCompile>
     <ClCompile Include="..\Private\MapObjectXY.cpp">
       <Filter>02.GameObjects\MapObject\MapObject\MapObjectXY</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Elevator_L.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_L</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_Elevator_R.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_ELEVATOR_R</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Elevator_L.cpp">
+      <Filter>02.GameObjects\MapObject\Elevator\L</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\Elevator_R.cpp">
+      <Filter>02.GameObjects\MapObject\Elevator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
