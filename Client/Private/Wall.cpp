@@ -51,10 +51,10 @@ HRESULT CWall::Render()
 	if (FAILED(m_pTransform->Bind_WorldMatrix()))
 		return E_FAIL;
 
-	if (FAILED(m_pTextureCom->Bind_Texture(m_iTexture_Index)))
-		return E_FAIL;
-
-	m_pVIBufferCom->Render();
+	if (S_OK == m_pTextureCom->Bind_Texture(m_iTexture_Index))
+	{
+		m_pVIBufferCom->Render();
+	}
 
 	m_pBoxCollider->Render();
 	return S_OK;

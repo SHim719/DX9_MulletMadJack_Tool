@@ -11,14 +11,14 @@
 
 wstring CMap_Manager::strLayers[OBJTYPE_END] = { L"Monster", L"Trigger", L"Wall", L"Floor", L"MapObject", L"Door",
 	L"SodaMachine", L"SodaMachine_Banner", L"MapObject", L"SpawnTrigger", L"Slope", L"BoxObject",
- L"Ventilador", L"Elevator", L"Elevator" };
+ L"Ventilador", L"Elevator", L"Elevator", L"Wall"};
 
 wstring CMap_Manager::strPrototypeTags[OBJTYPE_END] = { L"Prototype_Monster", L"Prototype_Trigger"
 		, L"Prototype_Wall", L"Prototype_Floor", L"Prototype_MapObject"
 		, L"Prototype_Door", L"Prototype_SodaMachine"
 		, L"Prototype_SodaMachine_Banner",
 	L"Prototype_Border", L"Prototype_SpawnTrigger", L"Prototype_Slope", L"Prototype_BoxObject",
-L"Prototype_Ventilador", L"Prototype_Elevator_L", L"Prototype_Elevator_R" };
+L"Prototype_Ventilador", L"Prototype_Elevator_L", L"Prototype_Elevator_R", L"Prototype_MoveWall"};
 
 
 HRESULT CMap_Manager::Save_Map(vector<CGameObject*>* vecObjects)

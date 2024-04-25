@@ -145,6 +145,12 @@
     <Filter Include="02.GameObjects\MapObject\Elevator\L">
       <UniqueIdentifier>{0288a68d-fc9f-4a94-8ada-914b2da246f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="03.Client_Components\VIBuffer\VIBuffer_MoveWall">
+      <UniqueIdentifier>{0019a19b-43f7-46ce-9fe9-558dea39d7eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.GameObjects\MapObject\MoveWall">
+      <UniqueIdentifier>{6db02c0a-9e9e-4c52-af88-578893c47190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -285,6 +291,12 @@
     <ClInclude Include="..\Public\Elevator_R.h">
       <Filter>02.GameObjects\MapObject\Elevator</Filter>
     </ClInclude>
+    <ClInclude Include="..\Public\VIBuffer_MoveWall.h">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_MoveWall</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\MoveWall.h">
+      <Filter>02.GameObjects\MapObject\MoveWall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -409,6 +421,12 @@
     </ClCompile>
     <ClCompile Include="..\Private\Elevator_R.cpp">
       <Filter>02.GameObjects\MapObject\Elevator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\VIBuffer_MoveWall.cpp">
+      <Filter>03.Client_Components\VIBuffer\VIBuffer_MoveWall</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\MoveWall.cpp">
+      <Filter>02.GameObjects\MapObject\MoveWall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

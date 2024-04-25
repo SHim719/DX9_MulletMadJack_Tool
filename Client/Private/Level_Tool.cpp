@@ -21,6 +21,7 @@
 #include "MapObjectXY.h"
 #include "Elevator_L.h"
 #include "Elevator_R.h"
+#include "MoveWall.h"
 
 CLevel_Tool::CLevel_Tool(LPDIRECT3DDEVICE9 pGraphic_Device)
     :CLevel{ pGraphic_Device }
@@ -43,7 +44,7 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Object_Textures",
         CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-            L"../Bin/Resources/Textures/Objects/Object%d.png", 30))))
+            L"../Bin/Resources/Textures/Objects/Object%d.png", 31))))
         return E_FAIL;
 
     if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Door_Textures",
@@ -68,7 +69,7 @@ HRESULT CLevel_Tool::Initialize()
 
    if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Monster_Textures",
        CTexture::Create(m_pGraphic_Device, CTexture::TYPE_TEXTURE2D,
-           L"../Bin/Resources/Textures/Monster/Monster%d.png", 3))))
+           L"../Bin/Resources/Textures/Monster/Monster%d.png", 4))))
        return E_FAIL;
 
    if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, L"Slope_Textures",
@@ -154,6 +155,10 @@ HRESULT CLevel_Tool::Initialize()
 
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Elevator_R"),
         CElevator_R::Create(m_pGraphic_Device))))
+        return E_FAIL;
+
+    if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_MoveWall"),
+        CMoveWall::Create(m_pGraphic_Device))))
         return E_FAIL;
     
     if (FAILED(m_pGameInstance->Add_Prototype(TEXT("Prototype_Player"),

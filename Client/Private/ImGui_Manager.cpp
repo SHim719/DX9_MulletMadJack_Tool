@@ -42,11 +42,12 @@ HRESULT CImGui_Manager::Initialize(LPDIRECT3DDEVICE9 pGraphic_Device)
         assert(false);
     }
 
-    m_iTexture_Count[WALL] = 25;
+    m_iTexture_Count[WALL] = 30;
+    m_iTexture_Count[MOVEWALL] = 30;
     m_iTexture_Count[FLOOR] = 10;
     m_iTexture_Count[OBJECT] = 31;
     m_iTexture_Count[DOOR] = 5;
-    m_iTexture_Count[MONSTER] = 3;
+    m_iTexture_Count[MONSTER] = 10;
     //m_iTexture_Count[EVENT_TRIGGER] = 2;
     m_iTexture_Count[SLOPE] = 1;
    
@@ -614,6 +615,12 @@ void CImGui_Manager::Tree_SceneObjects()
         Tree_View(ELEVATOR_R);
         ImGui::TreePop();
     }
+
+    if (ImGui::TreeNode("MoveWall"))
+    {
+        Tree_View(MOVEWALL);
+        ImGui::TreePop();
+    }
 }
 
 void CImGui_Manager::Tree_View(eObjectType eType)
@@ -692,7 +699,7 @@ void CImGui_Manager::ComboBox_Object()
     static int iItemIdx = 0;
     const char* combo_value[OBJTYPE_END] = { "Monster", "Trigger",
         "Wall", "Floor", "Object", "Door", "SodaMachine", "SodaMachine_Banner", "Border", "Spawn_Trigger", "Slope"
-    , "Box", "Ventilador", "Elevator_L", "Elevator_R" };
+    , "Box", "Ventilador", "Elevator_L", "Elevator_R", "MoveWall"};
      
     ImGui::Combo("##Object", &iItemIdx, combo_value, IM_ARRAYSIZE(combo_value));
 

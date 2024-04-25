@@ -144,6 +144,12 @@ HRESULT CMainApp::Ready_Prototype_Components()
 	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("VIBuffer_Elevator_R_Default"),
 		CVIBuffer_Elevator_R::Create(m_pGraphic_Device))))
 		return E_FAIL;
+
+
+	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("VIBuffer_MoveWall_Default"),
+		CVIBuffer_MoveWall::Create(m_pGraphic_Device))))
+		return E_FAIL;
+
 #pragma endregion
 
 	if (FAILED(m_pGameInstance->Add_Prototype(LEVEL_STATIC, TEXT("Box_Collider_Default"),

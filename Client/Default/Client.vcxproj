@@ -183,6 +183,7 @@
     <ClInclude Include="..\Public\MainApp.h" />
     <ClInclude Include="..\Public\MapObjectXY.h" />
     <ClInclude Include="..\Public\Monster.h" />
+    <ClInclude Include="..\Public\MoveWall.h" />
     <ClInclude Include="..\public\Player.h" />
     <ClInclude Include="..\Public\Rigidbody.h" />
     <ClInclude Include="..\Public\Slope.h" />
@@ -201,6 +202,7 @@
     <ClInclude Include="..\Public\VIBuffer_Elevator_L.h" />
     <ClInclude Include="..\Public\VIBuffer_Elevator_R.h" />
     <ClInclude Include="..\Public\VIBuffer_Floor_Border.h" />
+    <ClInclude Include="..\Public\VIBuffer_MoveWall.h" />
     <ClInclude Include="..\Public\VIBuffer_Sphere.h" />
     <ClInclude Include="..\Public\Wall.h" />
     <ClInclude Include="Client.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="..\Private\Elevator_L.cpp" />
     <ClCompile Include="..\Private\Elevator_R.cpp" />
     <ClCompile Include="..\Private\MapObjectXY.cpp" />
+    <ClCompile Include="..\Private\MoveWall.cpp" />
     <ClCompile Include="..\Private\Slope.cpp" />
     <ClCompile Include="..\Private\SpawnTrigger.cpp" />
     <ClCompile Include="..\Private\Monster.cpp" />
@@ -249,6 +252,7 @@
     <ClCompile Include="..\Private\VIBuffer_Elevator_L.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Elevator_R.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Floor_Border.cpp" />
+    <ClCompile Include="..\Private\VIBuffer_MoveWall.cpp" />
     <ClCompile Include="..\Private\VIBuffer_Sphere.cpp" />
     <ClCompile Include="..\Private\Wall.cpp" />
     <ClCompile Include="Client.cpp" />
